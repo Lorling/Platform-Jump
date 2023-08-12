@@ -1,0 +1,4 @@
+repository "Platform Jump@lorling@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
