@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerState : ScriptableObject, IState
+{
+    Animator animator;
+    PlayerStateMachine stateMachine;
+
+    public void Initialize(Animator animator, PlayerStateMachine stateMachine)
+    {
+        this.animator = animator;
+        this.stateMachine = stateMachine;
+    }
+
+    public virtual void Enter()
+    {
+
+    }
+
+    public virtual void Exit()
+    {
+
+    }
+
+    public virtual void PhysicUpdate()
+    {
+
+    }
+
+    public virtual void Update()
+    {
+
+    }
+}
