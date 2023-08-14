@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83c162579b258524aa560c9299a62520, type: 3}
-  m_Name: PlayerState_Run
+  m_Script: {fileID: 11500000, guid: f97d5e3caba7eb941b8a092ee7a608cd, type: 3}
+  m_Name: PlayerState_Jump
   m_EditorClassIdentifier: 
-  stateName: Run
+  stateName: Jump
   transitionDuration: 0.1
-  runSpeed: 5
-  acceleration: 15
+  jumpSpeed: 7
+  moveSpeed: 5
+  acceleration: 10
+  deceleration: 20
+  minimumJumpTime: 0.2

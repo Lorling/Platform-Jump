@@ -25,10 +25,21 @@ public class PlayerState_Idle : PlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Run));
         }
+
         if(!switchAnimationEnter && !isSwitchAnimation && currentSpeed == 0)
         {
             base.Enter();
             isSwitchAnimation = true;
+        }
+
+        if (input.Jump)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Jump));
+        }
+
+        if (!player.IsGround)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
     }
 

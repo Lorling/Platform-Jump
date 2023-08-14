@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerState : ScriptableObject, IState
@@ -16,6 +14,15 @@ public class PlayerState : ScriptableObject, IState
 
     int stateHash;
 
+    // 判断动画是否播放结束
+    protected float StateDuration => Time.time - StateStartTime;
+    float StateStartTime;
+    protected bool IsAnimationFinished => StateDuration >= animator.GetCurrentAnimatorStateInfo(0).length;
+
+    // 二段跳
+    [SerializeField] protected static int JumpCount = 1;
+    protected static int jumpCount;
+
     public void Initialize(Animator animator, PlayerController player, PlayerInput input, PlayerStateMachine stateMachine)
     {
         this.animator = animator;
@@ -27,6 +34,7 @@ public class PlayerState : ScriptableObject, IState
     public virtual void Enter()
     {
         animator.CrossFade(stateHash, transitionDuration);
+        StateStartTime = Time.time;
     }
 
     public virtual void Exit()

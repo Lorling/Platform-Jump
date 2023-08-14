@@ -1648,6 +1648,7 @@ Transform:
   m_Children:
   - {fileID: 2900298148104442894}
   - {fileID: 747501541}
+  - {fileID: 1282153287}
   - {fileID: 1737633378}
   - {fileID: 1406394538}
   m_Father: {fileID: 0}
@@ -1717,6 +1718,9 @@ MonoBehaviour:
   states:
   - {fileID: 11400000, guid: 9c5fd708da8cb9d4a98088dd052d9454, type: 2}
   - {fileID: 11400000, guid: 3a0c4de13ddf7744480c4922733e15f8, type: 2}
+  - {fileID: 11400000, guid: e71392cb4c17ea04d8ce5385bba834d7, type: 2}
+  - {fileID: 11400000, guid: bc61220f5d242884a9ddd4e6f22ddd20, type: 2}
+  - {fileID: 11400000, guid: aa4d9483d7b6e1748bdf6c8a45c720f7, type: 2}
 --- !u!114 &139370792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5789,6 +5793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 747501541}
+  - component: {fileID: 747501542}
   m_Layer: 0
   m_Name: Grounded Detector
   m_TagString: Untagged
@@ -5811,6 +5816,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 139370787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &747501542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747501540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f8c01cfa6b9ca4a83e866dba6a265f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &770174293
 GameObject:
   m_ObjectHideFlags: 0
@@ -8888,6 +8909,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246372541}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1282153286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1282153287}
+  - component: {fileID: 1282153288}
+  m_Layer: 0
+  m_Name: Wall Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1282153287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282153286}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.198, y: 0.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 139370787}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282153288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282153286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427c91cd6dddbc14aa6a23ade8bad67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1288473870
 GameObject:
   m_ObjectHideFlags: 0
@@ -11684,7 +11753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1613453362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground and Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
