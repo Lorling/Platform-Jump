@@ -1721,6 +1721,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e71392cb4c17ea04d8ce5385bba834d7, type: 2}
   - {fileID: 11400000, guid: bc61220f5d242884a9ddd4e6f22ddd20, type: 2}
   - {fileID: 11400000, guid: aa4d9483d7b6e1748bdf6c8a45c720f7, type: 2}
+  - {fileID: 11400000, guid: 049875a5064fbbc498a97a7b58f8931d, type: 2}
 --- !u!114 &139370792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1733,6 +1734,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eba35e993f3ea44fbb49c6542b5fdac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JumpCount: 0
+  jumpCount: 0
+  starGems: []
 --- !u!114 &139370793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1745,6 +1749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf9f31c8b64ed544987fa0ff5110b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpInputBufferTime: 0.2
 --- !u!1001 &144660383
 PrefabInstance:
   m_ObjectHideFlags: 0

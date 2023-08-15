@@ -19,10 +19,6 @@ public class PlayerState : ScriptableObject, IState
     float StateStartTime;
     protected bool IsAnimationFinished => StateDuration >= animator.GetCurrentAnimatorStateInfo(0).length;
 
-    // ¶þ¶ÎÌø
-    [SerializeField] protected static int JumpCount = 1;
-    protected static int jumpCount;
-
     public void Initialize(Animator animator, PlayerController player, PlayerInput input, PlayerStateMachine stateMachine)
     {
         this.animator = animator;

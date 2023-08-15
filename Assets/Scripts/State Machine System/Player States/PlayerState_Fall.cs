@@ -3,7 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerState_Fall", menuName = "Data/StateMachine/PlayerState/Fall")]
 public class PlayerState_Fall : PlayerState
 {
+    [Header("速度曲线")]
     [SerializeField] AnimationCurve speedCurve;
+    [Header("水平方向速度")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float acceleration = 10f;
     [SerializeField] float deceleration = 15f;
@@ -22,10 +24,17 @@ public class PlayerState_Fall : PlayerState
             stateMachine.SwitchState(typeof(PlayerState_Land));
         }
 
-        if (input.Jump && jumpCount == 1)
+        if (input.JumpInputBuffer || input.Jump)
         {
-            jumpCount--;
-            stateMachine.SwitchState(typeof(PlayerState_Jump));
+            if(player.jumpCount > 0)
+            {
+                player.jumpCount--;
+                stateMachine.SwitchState(typeof(PlayerState_Jump));
+            }
+            else
+            {
+                input.SetJumpInputBuffer();
+            }
         }
     }
 

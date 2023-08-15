@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerState_Land", menuName = "Data/StateMachine/PlayerState/Land")]
 public class PlayerState_Land : PlayerState
 {
+    [Header("Ó²Ö±Ê±¼ä")]
     [SerializeField] float stiffTime = 0.2f;
 
     public override void Enter()
@@ -10,7 +11,12 @@ public class PlayerState_Land : PlayerState
         base.Enter();
 
         player.SetVelocityY(0);
-        jumpCount = JumpCount;
+        player.jumpCount = player.JumpCount;
+
+        if(player.starGems.Count > 0)
+        {
+            player.ReSetStarGem();
+        }
     }
 
     public override void Update()

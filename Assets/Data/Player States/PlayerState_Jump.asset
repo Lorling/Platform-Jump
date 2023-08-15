@@ -14,8 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: Jump
   transitionDuration: 0.1
-  jumpSpeed: 7
   moveSpeed: 5
   acceleration: 10
   deceleration: 20
   minimumJumpTime: 0.2
+  jumpVFX: {fileID: 4677385770777475979, guid: 31beca5807f326246860109c534f1383, type: 3}
+  doubleJumpVFX: {fileID: 19800018, guid: f57f82b6093f15b4a8b75d132acf37b7, type: 3}
+  speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 8
+      inSlope: -15.218874
+      outSlope: -15.218874
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.057339445
+    - serializedVersion: 3
+      time: 0.8
+      value: -0.01
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

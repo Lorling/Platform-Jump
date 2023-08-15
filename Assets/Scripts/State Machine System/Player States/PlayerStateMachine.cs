@@ -6,6 +6,7 @@ using UnityEngine.Windows;
 
 public class PlayerStateMachine : StateMachine
 {
+    [Header("角色状态的资产文件")]
     [SerializeField] PlayerState[] states;
 
     Animator animator;
