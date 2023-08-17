@@ -28,7 +28,6 @@ public class PlayerState_Fall : PlayerState
         {
             if(player.jumpCount > 0)
             {
-                player.jumpCount--;
                 stateMachine.SwitchState(typeof(PlayerState_Jump));
             }
             else
@@ -41,7 +40,7 @@ public class PlayerState_Fall : PlayerState
     public override void PhysicUpdate()
     {
         if (input.Move) currentSpeed = Mathf.MoveTowards(currentSpeed, moveSpeed, acceleration * Time.fixedDeltaTime);
-        player.Move(player.IsWall ? 0 : currentSpeed);
+        player.Move(currentSpeed);
 
         player.SetVelocityY(speedCurve.Evaluate(StateDuration));
     }

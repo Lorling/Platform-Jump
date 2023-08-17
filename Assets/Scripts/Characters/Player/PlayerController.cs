@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     PlayerGroundDetector groundDetector;
-    PlayerWallDetector wallDetector;
     PlayerInput input;
     Rigidbody rigidbody;
+    public AudioSource audioSource;
 
     // 二段跳
     [Header("默认二段跳次数，除了这个参数，其他的不要碰")]
@@ -18,16 +19,33 @@ public class PlayerController : MonoBehaviour
     public bool IsFalling => rigidbody.velocity.y < 0 && !IsGround;
     public float moveSpeed => Mathf.Abs(rigidbody.velocity.x);
 
-    public bool IsWall => wallDetector.IsWall;
+    public bool Victory { get; private set; }
 
     public List<StarGem> starGems = new List<StarGem>();
+
+    [SerializeField] VoidEventChannel levelClearance;
 
     void Awake()
     {
         groundDetector = GetComponentInChildren<PlayerGroundDetector>();
-        wallDetector = GetComponentInChildren<PlayerWallDetector>();
         input = GetComponent<PlayerInput>();
         rigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponentInChildren<AudioSource>();
+    }
+
+    void OnEnable()
+    {
+        levelClearance.AddListener(OnLevelClearance);
+    }
+
+    void OnDisable()
+    {
+        levelClearance.RemoveListener(OnLevelClearance);
+    }
+
+    void OnLevelClearance()
+    {
+        Victory = true;
     }
 
     void Start()
@@ -66,5 +84,15 @@ public class PlayerController : MonoBehaviour
             gem.Reset();
         }
         starGems.Clear();
+    }
+
+    public void OnDefeated()
+    {
+        input.DisableGameplayInputs();
+
+        rigidbody.velocity = new Vector3(0, 0, 0);
+        GetComponent<Collider>().enabled = false;
+
+        GetComponent<PlayerStateMachine>().SwitchState(typeof(PlayerState_Defeated));
     }
 }

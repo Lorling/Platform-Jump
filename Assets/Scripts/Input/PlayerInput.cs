@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,5 +56,10 @@ public class PlayerInput : MonoBehaviour
         yield return waitJumpInputBufferTime;
 
         JumpInputBuffer = false;
+    }
+
+    public void DisableGameplayInputs()
+    {
+        inputActions.Disable();
     }
 }

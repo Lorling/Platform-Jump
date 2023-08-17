@@ -14,6 +14,9 @@ public class PlayerState_Jump : PlayerState
     [SerializeField] ParticleSystem doubleJumpVFX;
     [Header("速度衰减曲线")]
     [SerializeField] AnimationCurve speedCurve;
+    [Header("跳跃音效")]
+    [SerializeField] AudioClip jumpSFX;
+    [SerializeField] AudioClip doubleJumpSFX;
 
     bool IsPressJump;
 
@@ -30,8 +33,18 @@ public class PlayerState_Jump : PlayerState
 
         IsPressJump = true;
 
-        if(player.jumpCount == 1) Instantiate(jumpVFX, player.transform.position, Quaternion.identity);
-        else Instantiate(doubleJumpVFX, player.transform.position, Quaternion.identity);
+        if (player.jumpCount == 0)
+        {
+            Instantiate(jumpVFX, player.transform.position, Quaternion.identity);
+            player.audioSource.PlayOneShot(jumpSFX);
+        }
+        else
+        {
+            Instantiate(doubleJumpVFX, player.transform.position, Quaternion.identity);
+            player.audioSource.PlayOneShot(doubleJumpSFX);
+        }
+
+        player.jumpCount = Mathf.Max(--player.jumpCount, 0);
     }
 
     public override void Update()
@@ -51,7 +64,7 @@ public class PlayerState_Jump : PlayerState
     public override void PhysicUpdate()
     {
         if(input.Move) currentSpeed = Mathf.MoveTowards(currentSpeed, moveSpeed, acceleration * Time.fixedDeltaTime);
-        player.Move(player.IsWall ? 0 : currentSpeed);
+        player.Move(currentSpeed);
 
         player.SetVelocityY(speedCurve.Evaluate(StateDuration));
     }

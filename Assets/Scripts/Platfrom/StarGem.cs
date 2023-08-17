@@ -9,12 +9,10 @@ public class StarGem : MonoBehaviour
 
     Collider collider;
     MeshRenderer renderer;
-    AudioSource audioSource;
 
     void Awake()
     {
         collider = GetComponent<Collider>();
-        audioSource = GetComponent<AudioSource>();
         renderer = GetComponentInChildren<MeshRenderer>();
     }
 
@@ -26,7 +24,7 @@ public class StarGem : MonoBehaviour
             player.jumpCount = player.JumpCount + 1;
             player.starGems.Add(this);
 
-            audioSource.PlayOneShot(pickupSFX);
+            SoundEffectsPlayer.audioSource.PlayOneShot(pickupSFX);
             Instantiate(pickupVFX, transform.position, Quaternion.identity);
 
             collider.enabled = false;

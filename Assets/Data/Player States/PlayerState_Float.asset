@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08564a0e6b837814e9f091abb63a7969, type: 3}
+  m_Name: PlayerState_Float
+  m_EditorClassIdentifier: 
+  stateName: Float
+  transitionDuration: 0.1
+  levelDefeated: {fileID: 11400000, guid: ddd2057e003cfbf439175cc3e075244c, type: 2}
+  floatPositionClampMinx: 0
+  floatPositionClampMaxx: 0.95
+  floatPositionClampMiny: 0
+  floatPositionClampMaxy: 0.95
+  floatToNextPositionTime: 3
+  stopMinTime: 1
+  stopMaxTime: 3
+  floatVFX: {fileID: 4260479563582157819, guid: 5bfc8a5a68b0a714e98c07c88d52ca53, type: 3}
