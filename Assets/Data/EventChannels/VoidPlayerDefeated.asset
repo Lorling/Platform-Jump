@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9940fcadd190848be48f71b2ce1e8e, type: 3}
-  m_Name: PlayerState_Idle
+  m_Script: {fileID: 11500000, guid: c03654756b0ce29439f76d7ee3e41c70, type: 3}
+  m_Name: VoidPlayerDefeated
   m_EditorClassIdentifier: 
-  stateName: Idle
-  transitionDuration: 0.1
-  deceleration: 20
-  switchAnimationEnter: 0
-  coyoteTime: 2

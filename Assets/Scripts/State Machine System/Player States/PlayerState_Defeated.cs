@@ -9,6 +9,7 @@ public class PlayerState_Defeated : PlayerState
     [SerializeField] AudioClip[] deathSFX;
     [Header("À¿ÕˆÃÿ–ß")]
     [SerializeField] ParticleSystem deathVFX;
+    [SerializeField] VoidEventChannel PlayerDefeated;
 
     public override void Enter()
     {
@@ -16,6 +17,8 @@ public class PlayerState_Defeated : PlayerState
 
         Instantiate(deathVFX, player.transform.position, Quaternion.identity);
         SoundEffectsPlayer.audioSource.PlayOneShot(deathSFX[Random.Range(0, deathSFX.Length)]);
+
+        PlayerDefeated.BroadCast();
     }
 
     public override void Update()

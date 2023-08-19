@@ -29,6 +29,11 @@ public class PlayerState_Idle : PlayerState
 
     public override void Update()
     {
+        if (player.Victory)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Vectory));
+        }
+
         if (input.JumpInputBuffer || input.Jump)
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
@@ -43,7 +48,7 @@ public class PlayerState_Idle : PlayerState
         if (!player.IsGround)
         {
             if (leavePlatformTime == 0) leavePlatformTime = Time.time;
-            if (Time.time - leavePlatformTime > coyoteTime)
+            if (Time.time - leavePlatformTime > coyoteTime || input.Move)
             {
                 stateMachine.SwitchState(typeof(PlayerState_Fall));
             }

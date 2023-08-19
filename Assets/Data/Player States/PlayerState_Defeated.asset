@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14442038946004af3aaf906b64944b5f, type: 3}
   - {fileID: 8300000, guid: 60e04cb188aff4081a59ce70a1ff20c9, type: 3}
   deathVFX: {fileID: 19853964, guid: bb266f46b1cf64146ba6d47074785030, type: 3}
+  PlayerDefeated: {fileID: 11400000, guid: a3cd2f9341ecf9e4eadf6f24d0ec89f0, type: 2}

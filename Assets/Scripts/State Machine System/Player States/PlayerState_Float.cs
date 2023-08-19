@@ -46,7 +46,7 @@ public class PlayerState_Float : PlayerState
 
         player.GetComponent<Collider>().layerOverridePriority = 10;
 
-        Instantiate(floatVFX, player.transform.position + new Vector3(0.25f, 0.5f, 0), Quaternion.identity, player.transform);
+        Instantiate(floatVFX, player.transform.position + new Vector3(0.25f * player.transform.localScale.x, 0.5f, 0), Quaternion.identity, player.transform);
 
         levelDefeated.BroadCast();
 

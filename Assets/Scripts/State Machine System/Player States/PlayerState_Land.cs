@@ -48,8 +48,15 @@ public class PlayerState_Land : PlayerState
 
     public override void PhysicUpdate()
     {
-        if(input.Move) currentSpeed = Mathf.MoveTowards(currentSpeed, runSpeed, acceleration * Time.fixedDeltaTime);
-        else currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.fixedDeltaTime);
-        player.SetVelocityX(currentSpeed * player.transform.localScale.x);
+        if (input.Move)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, runSpeed, acceleration * Time.fixedDeltaTime);
+            player.Move(currentSpeed);
+        }
+        else
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.fixedDeltaTime);
+            player.SetVelocityX(currentSpeed);
+        }
     }
 }

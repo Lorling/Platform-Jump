@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool IsFalling => rigidbody.velocity.y < 0 && !IsGround;
     public float moveSpeed => Mathf.Abs(rigidbody.velocity.x);
 
-    public bool Victory { get; private set; }
+    public bool Victory { get; set; }
 
     public List<StarGem> starGems = new List<StarGem>();
 
@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     void OnLevelClearance()
     {
         Victory = true;
+
+        input.DisableGameplayInputs();
     }
 
     void Start()

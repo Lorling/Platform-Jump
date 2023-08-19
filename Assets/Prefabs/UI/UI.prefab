@@ -105,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467496967575292945}
   - component: {fileID: 1467496967575292948}
+  - component: {fileID: 1036813879027169069}
   m_Layer: 5
   m_Name: Clear Timer
   m_TagString: Untagged
@@ -140,7 +141,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467496967575292946}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -156,6 +157,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1036813879027169069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467496967575292946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d1910ae6c29b74d831326741633639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 1467496969087110719}
+  VoidLevelStart: {fileID: 11400000, guid: aaef2807b5cdd8e4ba34a97a5bbe9e7c, type: 2}
+  VoidLevelClearance: {fileID: 11400000, guid: 252ab9d80faa30d44bc9a987899ff186, type: 2}
+  StringClearTime: {fileID: 11400000, guid: 0417d560c0dc9aa46af5912eb11cb3e9, type: 2}
 --- !u!1 &1467496967588288347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,6 +1075,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelDefeated: {fileID: 11400000, guid: ddd2057e003cfbf439175cc3e075244c, type: 2}
+  defeatedAudio:
+  - {fileID: 8300000, guid: 91c68039ec5d440779d554f2876d84cc, type: 3}
+  - {fileID: 8300000, guid: 84c678c4c8f2643c1afb6f6ab2ad3293, type: 3}
+  - {fileID: 8300000, guid: fa5234b2218704e3da5e9fb3e5ee1325, type: 3}
+  retryButton: {fileID: 1467496967865795298}
+  quitButton: {fileID: 1467496967588288345}
 --- !u!95 &4926717417435727110
 Animator:
   serializedVersion: 5
@@ -1066,7 +1089,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467496968177820180}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7c3ef0e763718f74f9326a8782a77e1a, type: 2}
   m_CullingMode: 0
@@ -1386,6 +1409,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelClearance: {fileID: 11400000, guid: 252ab9d80faa30d44bc9a987899ff186, type: 2}
+  ClearTime: {fileID: 11400000, guid: 0417d560c0dc9aa46af5912eb11cb3e9, type: 2}
+  nextLevelButton: {fileID: 1467496968063722306}
+  clearTime: {fileID: 1467496967505517433}
 --- !u!1 &1467496969204292968
 GameObject:
   m_ObjectHideFlags: 0

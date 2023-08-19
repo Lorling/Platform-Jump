@@ -63,8 +63,16 @@ public class PlayerState_Jump : PlayerState
 
     public override void PhysicUpdate()
     {
-        if(input.Move) currentSpeed = Mathf.MoveTowards(currentSpeed, moveSpeed, acceleration * Time.fixedDeltaTime);
-        player.Move(currentSpeed);
+        if (input.Move)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, moveSpeed, acceleration * Time.fixedDeltaTime);
+            player.Move(currentSpeed);
+        }
+        else
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.fixedDeltaTime);
+            player.SetVelocityX(currentSpeed);
+        }
 
         player.SetVelocityY(speedCurve.Evaluate(StateDuration));
     }
