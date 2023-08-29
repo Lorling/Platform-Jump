@@ -24,6 +24,16 @@ public class PlayerState_Fall : PlayerState
             stateMachine.SwitchState(typeof(PlayerState_Land));
         }
 
+        if (input.Dash && player.dashCount > 0 && player.canDash)
+        {
+            if (input.UpInputBuffer)
+            {
+                stateMachine.SwitchState(typeof(PlayerState_UpDash));
+                return;
+            }
+            stateMachine.SwitchState(typeof(PlayerState_Dash));
+        }
+
         if (input.JumpInputBuffer || input.Jump)
         {
             if(player.jumpCount > 0)
@@ -47,7 +57,7 @@ public class PlayerState_Fall : PlayerState
         else
         {
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.fixedDeltaTime);
-            player.SetVelocityX(currentSpeed);
+            player.SetVelocityX(currentSpeed * player.transform.localScale.x);
         }
 
         player.SetVelocityY(speedCurve.Evaluate(StateDuration));

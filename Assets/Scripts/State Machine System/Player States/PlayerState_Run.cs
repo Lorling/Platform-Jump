@@ -20,6 +20,16 @@ public class PlayerState_Run : PlayerState
             stateMachine.SwitchState(typeof (PlayerState_Idle));
         }
 
+        if (input.Dash && player.canDash)
+        {
+            if (input.UpInputBuffer)
+            {
+                stateMachine.SwitchState(typeof(PlayerState_UpDash));
+                return;
+            }
+            stateMachine.SwitchState(typeof(PlayerState_Dash));
+        }
+
         if (input.Jump)
         {
             stateMachine.SwitchState(typeof (PlayerState_Jump));

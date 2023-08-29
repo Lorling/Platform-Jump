@@ -49,7 +49,18 @@ public class PlayerState_Jump : PlayerState
 
     public override void Update()
     {
-        if(input.StopJump) IsPressJump = false;
+        if (input.Dash && player.dashCount > 0 && player.canDash)
+        {
+            if (input.UpInputBuffer)
+            {
+                stateMachine.SwitchState(typeof(PlayerState_UpDash));
+                return;
+            }
+            stateMachine.SwitchState(typeof(PlayerState_Dash));
+        }
+
+        if (input.StopJump) IsPressJump = false;
+
         if ((!IsPressJump && StateDuration >= minimumJumpTime) || player.IsFalling)
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
@@ -71,9 +82,9 @@ public class PlayerState_Jump : PlayerState
         else
         {
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.fixedDeltaTime);
-            player.SetVelocityX(currentSpeed);
+            player.SetVelocityX(currentSpeed * player.transform.localScale.x);
         }
-
+        
         player.SetVelocityY(speedCurve.Evaluate(StateDuration));
     }
 }

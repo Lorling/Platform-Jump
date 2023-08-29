@@ -21,7 +21,8 @@ public class StarGem : MonoBehaviour
         //检测进入触发器的是不是玩家
         if(other.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            player.jumpCount = player.JumpCount + 1;
+            if (player.JumpCount == 0) player.jumpCount = 1;
+            else player.jumpCount = Mathf.Min(player.jumpCount, player.jumpCount + 1);
             player.starGems.Add(this);
 
             SoundEffectsPlayer.audioSource.PlayOneShot(pickupSFX);

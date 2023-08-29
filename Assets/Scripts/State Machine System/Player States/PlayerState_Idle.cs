@@ -25,6 +25,8 @@ public class PlayerState_Idle : PlayerState
         currentSpeed = player.moveSpeed;
 
         leavePlatformTime = 0;
+
+        player.dashCount = 1;
     }
 
     public override void Update()
@@ -37,6 +39,16 @@ public class PlayerState_Idle : PlayerState
         if (input.JumpInputBuffer || input.Jump)
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
+        }
+
+        if (input.Dash && player.canDash)
+        {
+            if (input.UpInputBuffer)
+            {
+                stateMachine.SwitchState(typeof(PlayerState_UpDash));
+                return;
+            }
+            stateMachine.SwitchState(typeof (PlayerState_Dash));
         }
 
         if (!switchAnimationEnter && !isSwitchAnimation && currentSpeed == 0)

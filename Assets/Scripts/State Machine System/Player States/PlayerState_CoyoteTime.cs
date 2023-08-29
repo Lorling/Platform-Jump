@@ -22,6 +22,12 @@ public class PlayerState_CoyoteTime : PlayerState
             stateMachine.SwitchState(typeof(PlayerState_Jump));
         }
 
+        if (input.Dash && player.canDash)
+        {
+            if (input.UpInputBuffer) stateMachine.SwitchState(typeof(PlayerState_UpDash));
+            stateMachine.SwitchState(typeof(PlayerState_Dash));
+        }
+
         if (!input.Move || StateDuration > coyoteTime)
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));

@@ -18,9 +18,10 @@ public class PlayerState_Land : PlayerState
 
         player.SetVelocityY(0);
         player.jumpCount = player.JumpCount;
+        player.dashCount = 1;
 
         //重新生成道具
-        if(player.starGems.Count > 0)
+        if (player.starGems.Count > 0)
         {
             player.ReSetStarGem();
         }
@@ -31,6 +32,16 @@ public class PlayerState_Land : PlayerState
         if (input.Jump)
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
+        }
+
+        if (input.Dash && player.canDash)
+        {
+            if (input.UpInputBuffer)
+            {
+                stateMachine.SwitchState(typeof(PlayerState_UpDash));
+                return;
+            }
+            stateMachine.SwitchState(typeof(PlayerState_Dash));
         }
 
         if (StateDuration < stiffTime) return;
@@ -56,7 +67,7 @@ public class PlayerState_Land : PlayerState
         else
         {
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.fixedDeltaTime);
-            player.SetVelocityX(currentSpeed);
+            player.SetVelocityX(currentSpeed * player.transform.localScale.x);
         }
     }
 }

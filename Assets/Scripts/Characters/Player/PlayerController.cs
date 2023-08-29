@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
     public int JumpCount = 0;
     public int jumpCount;
 
+    // ³å´Ì
+    public int dashCount = 1;
+    public bool canDash => Time.time - dashStartTime > dashCD;
+    public float dashStartTime = -100.0f;
+    public float dashCD = 0.5f;
+
     public bool IsGround => groundDetector.IsGround;
     public bool IsFalling => rigidbody.velocity.y < 0 && !IsGround;
     public float moveSpeed => Mathf.Abs(rigidbody.velocity.x);

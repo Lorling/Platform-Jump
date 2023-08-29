@@ -15,16 +15,16 @@ public class SceneLoader
 
     public static void LoadNextScene()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if(currentSceneIndex >= SceneManager.sceneCount) 
+        if(currentSceneIndex + 1 >= SceneManager.sceneCount) 
         {
             //当前已经是最后一个场景
             SceneManager.LoadScene(currentSceneIndex);
             return;
         }
 
-        SceneManager.LoadScene(currentSceneIndex);
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
     public static void QuitGame()
